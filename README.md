@@ -11,64 +11,62 @@
 | 7                 | mother            | Constance Forrest | 1968-09-06
 | 8                 | daughter          | Alex Addams       | 2005-01-13
 
----
-
-### Получить таблицу «FamilyMembers»
+### 1. Получить таблицу «FamilyMembers»
 ```SQL
 SELECT * FROM FamilyMembers;
 ```
 
-### Получить столбец статусов из «FamilyMembers»
+### 2. Получить столбец статусов из «FamilyMembers»
 ```SQL
 SELECT status FROM FamilyMembers;
 ```
 
-### Получить таблицу, где статус `father`
+### 3. Получить таблицу, где статус `father`
 ```SQL
 SELECT * FROM FamilyMembers
 WHERE status = 'father';
 ```
 
-### Получить таблицу, где статус оканчивается на `er`
+### 4. Получить таблицу, где статус оканчивается на `er`
 ```SQL
 SELECT * FROM FamilyMembers
 WHERE status LIKE '%er';
 ```
 
-### Получить таблицу, где статус `father` или `mother`
+### 5. Получить таблицу, где статус `father` или `mother`
 ```SQL
 SELECT * FROM FamilyMembers
 WHERE status = 'father' OR status = 'mother';
 ```
 
-### Получить таблицу в порядке возрастания по `birthday`, где статус `daughter`
+### 6. Получить таблицу в порядке возрастания по `birthday`, где статус `daughter`
 ```SQL
 SELECT * FROM FamilyMembers
 WHERE status = 'daughter'
 ORDER BY birthday;
 ```
 
-### Получить таблицу в порядке убывания по `birthday`, где статус `daughter`
+### 7. Получить таблицу в порядке убывания по `birthday`, где статус `daughter`
 ```SQL
 SELECT * FROM FamilyMembers
 WHERE status = 'daughter'
 ORDER BY birthday DESC;
 ```
 
-### Удалить данные из таблицы «FamilyMembers», где `member_id = 8`
+### 8. Удалить данные из таблицы «FamilyMembers», где `member_id = 8`
 ```SQL
 DELETE FROM FamilyMembers
 WHERE member_id = 8;
 ```
 
-### Обновить данные в `member_name`, где `member_id = 8`
+### 9. Обновить данные в `member_name`, где `member_id = 8`
 ```SQL
 UPDATE FamilyMembers
 SET member_name = Alex Forrest
 WHERE member_id = 8;
 ```
 
-### Получить таблицу, где `member_id` в интервале от 5 до 10
+### 10. Получить таблицу, где `member_id` в интервале от 5 до 10
 ```SQL
 SELECT * FROM FamilyMembers
 WHERE member_id BETWEEN 5 AND 10;
@@ -91,20 +89,23 @@ WHERE member_id BETWEEN 5 AND 10;
 | 9                 | 2005-09-30        | 5             | 15       | 1        | 230        |
 | 10                | 2005-10-27        | 5             | 15       | 1        | 230        |
 
----
-
-### Получить таблицу с полями `member_name` из таблицы «FamilyMembers» и соответствующие ему поля `unit_price` из таблицы «Payments»
+### 11. Получить таблицу с полями `member_name` из таблицы «FamilyMembers» и соответствующие ему поля `unit_price` из таблицы «Payments»
 ```SQL
 SELECT member_name, unit_price FROM FamilyMembers JOIN Payments
 ON FamilyMembers.member_id = Payments.payment_id;
 ```
 
-### Получить сумму столбца `unit_price`
+### 12. Получить сумму столбца `unit_price`
 ```SQL
 SELECT SUM(unit_price) FROM Payments;
 ```
 
-### Получить среднее арифметическое столбца `unit_price` с названием «Average unit price»
+### 13. Получить кол-во строк из столбца `payment_id`
+```SQL
+SELECT COUNT(payment_id) FROM Payments;;
+```
+
+### 14. Получить среднее арифметическое столбца `unit_price` с названием «Average unit price»
 ```SQL
 SELECT AVG(unit_price) AS "Average unit price" FROM Payments;
 ```
